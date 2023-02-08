@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 	<!--begin::Head-->
 	<head><base href=""/>
 		<title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular & Laravel by Keenthemes</title>
@@ -56,7 +56,7 @@
 						<!--end::Sidebar mobile toggle-->
 						<!--begin::Mobile logo-->
 						<div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
-							<a href="../../demo1/dist/index.html" class="d-lg-none">
+							<a href="{{ route('users') }}" class="d-lg-none">
 								<img alt="Logo" src="/assets/media/logos/default-small.svg" class="h-30px" />
 							</a>
 						</div>
@@ -114,23 +114,11 @@
 															<!--begin:Menu item-->
 															<div class="menu-item">
 																<!--begin:Menu link-->
-																<a class="menu-link" href="{{ url('/users/list') }}">
+																<a class="menu-link" href="{{ route('users') }}">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
 																	<span class="menu-title">Users List</span>
-																</a>
-																<!--end:Menu link-->
-															</div>
-															<!--end:Menu item-->
-															<!--begin:Menu item-->
-															<div class="menu-item">
-																<!--begin:Menu link-->
-																<a class="menu-link" href="{{ url('/users/view') }}">
-																	<span class="menu-bullet">
-																		<span class="bullet bullet-dot"></span>
-																	</span>
-																	<span class="menu-title">View User</span>
 																</a>
 																<!--end:Menu link-->
 															</div>
@@ -155,7 +143,7 @@
 															<!--begin:Menu item-->
 															<div class="menu-item">
 																<!--begin:Menu link-->
-																<a class="menu-link" href="{{ url('/roles/list') }}">
+																<a class="menu-link" href="{{ route('roles') }}">
 																	<span class="menu-bullet">
 																		<span class="bullet bullet-dot"></span>
 																	</span>
@@ -164,32 +152,8 @@
 																<!--end:Menu link-->
 															</div>
 															<!--end:Menu item-->
-															<!--begin:Menu item-->
-															<div class="menu-item">
-																<!--begin:Menu link-->
-																<a class="menu-link" href="{{ url('/roles/view') }}">
-																	<span class="menu-bullet">
-																		<span class="bullet bullet-dot"></span>
-																	</span>
-																	<span class="menu-title">View Roles</span>
-																</a>
-																<!--end:Menu link-->
-															</div>
-															<!--end:Menu item-->
 														</div>
 														<!--end:Menu sub-->
-													</div>
-													<!--end:Menu item-->
-													<!--begin:Menu item-->
-													<div class="menu-item">
-														<!--begin:Menu link-->
-														<a class="menu-link" href="{{ url('/') }}">
-															<span class="menu-bullet">
-																<span class="bullet bullet-dot"></span>
-															</span>
-															<span class="menu-title">Permissions</span>
-														</a>
-														<!--end:Menu link-->
 													</div>
 													<!--end:Menu item-->
 												</div>
@@ -336,23 +300,11 @@
 													<!--begin:Menu item-->
 													<div class="menu-item">
 														<!--begin:Menu link-->
-														<a class="menu-link" href="{{ url('/users/list') }}">
+														<a class="menu-link" href="{{ route('users') }}">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
 															<span class="menu-title">Users List</span>
-														</a>
-														<!--end:Menu link-->
-													</div>
-													<!--end:Menu item-->
-													<!--begin:Menu item-->
-													<div class="menu-item">
-														<!--begin:Menu link-->
-														<a class="menu-link" href="{{ url('/users/view') }}">
-															<span class="menu-bullet">
-																<span class="bullet bullet-dot"></span>
-															</span>
-															<span class="menu-title">View User</span>
 														</a>
 														<!--end:Menu link-->
 													</div>
@@ -377,7 +329,7 @@
 													<!--begin:Menu item-->
 													<div class="menu-item">
 														<!--begin:Menu link-->
-														<a class="menu-link" href="{{ url('/roles/list') }}">
+														<a class="menu-link" href="{{ route('roles') }}">
 															<span class="menu-bullet">
 																<span class="bullet bullet-dot"></span>
 															</span>
@@ -386,32 +338,8 @@
 														<!--end:Menu link-->
 													</div>
 													<!--end:Menu item-->
-													<!--begin:Menu item-->
-													<div class="menu-item">
-														<!--begin:Menu link-->
-														<a class="menu-link" href="{{ url('/roles/view') }}">
-															<span class="menu-bullet">
-																<span class="bullet bullet-dot"></span>
-															</span>
-															<span class="menu-title">View Role</span>
-														</a>
-														<!--end:Menu link-->
-													</div>
-													<!--end:Menu item-->
 												</div>
 												<!--end:Menu sub-->
-											</div>
-											<!--end:Menu item-->
-											<!--begin:Menu item-->
-											<div class="menu-item">
-												<!--begin:Menu link-->
-												<a class="menu-link" href="{{ url('/') }}">
-													<span class="menu-bullet">
-														<span class="bullet bullet-dot"></span>
-													</span>
-													<span class="menu-title">Permissions</span>
-												</a>
-												<!--end:Menu link-->
 											</div>
 											<!--end:Menu item-->
 										</div>

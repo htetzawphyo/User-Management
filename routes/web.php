@@ -1,32 +1,31 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\UsersController;
+use App\Http\Controllers\PermissionController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::controller(RolesController::class)->group(function() {
+    Route::get('/roles', 'index')->name('roles');
+    Route::post('/roles/store', 'store')->name('roles.store');
+    Route::get('/roles/{role}', 'edit')->name('roles.edit');
+    Route::put('/roles/{role}', 'update')->name('roles.update');
+    Route::delete('/roles/{role}', 'delete')->name('roles.delete');
+});
+
+Route::controller(UsersController::class)->group(function() {
+    Route::get('/users', 'index')->name('users');
+    Route::post('/users/store', 'store')->name('users.store');
+    Route::get('/users/{role}', 'edit')->name('users.edit');
+    Route::put('/users/{role}', 'update')->name('users.update');
+    Route::delete('/users/{role}', 'delete')->name('users.delete');
+});
 
 Route::get('/', function () {
-    return view('user_management.permissions'); 
-})->name('permissions');
-
-Route::get('/roles/list', function () {
-    return view('user_management.roles.list'); 
-})->name('roles.list');
-Route::get('/roles/view', function () {
-    return view('user_management.roles.view'); 
-})->name('roles.view');
-
-Route::get('/users/list', function () {
     return view('user_management.users.list'); 
-})->name('users.list');
-Route::get('/users/view', function () {
-    return view('user_management.users.view'); 
-})->name('users.view');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
