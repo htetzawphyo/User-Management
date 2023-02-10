@@ -92,7 +92,7 @@
                                     <!--end::Permissions-->
                                 </div>
                                 <!--end::Card body-->
-                                <!--begin::Card footer-->
+                                <!--begin::Card footer--> 
                                 <div class="card-footer flex-wrap pt-0 d-flex flex-row">                                    
                                     <a  href="{{ route('roles.edit', $role->id) }}">
                                         <button class="btn btn-light btn-active-primary my-1 me-2">Edit Role</button>
