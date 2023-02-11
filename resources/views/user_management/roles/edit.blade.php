@@ -56,6 +56,11 @@
                         </ul>
                     </div>
                 @endif
+                @if (session('message'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('message') }}
+                    </div>
+                @endif
                 <!--begin::Card-->
                 <div class="card">
                     <!--begin::Card body-->

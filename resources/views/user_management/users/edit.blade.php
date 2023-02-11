@@ -52,6 +52,11 @@
             <div id="kt_app_content" class="app-content flex-column-fluid">
                 <!--begin::Content container-->
                 <div  class="app-container container-xxl">
+                    @if (session('message'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('message') }}
+                        </div>
+                    @endif
                     <!--begin::Card-->
                     <div class="card bg-secondary">
                         <!--begin::Card body-->

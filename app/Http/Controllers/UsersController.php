@@ -12,21 +12,24 @@ use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('CreateUser', ['only' => ['store', 'add']]);
+        $this->middleware('ReadUser', ['only' => ['index']]);
+        $this->middleware('UpdateUser', ['only' => ['edit', 'update']]);
+        $this->middleware('DeleteUser', ['only' => ['delete']]);
+    }
+
     public function index() 
     {
         $users = User::with('roles')->get();
         $roles = Role::with('permissions')->get();
-        // dd($users[0]->roles->name);
         return view('user_management.users.list', compact('users', 'roles'));
     }
 
     public function store(UserCreateRequest $request)
     {
-        
-        if(Auth::user()->roles->id != 1){
-            return back()->with('message', 'Unauthorize');
-        }
-
         $user = new User();
         $user->name = $request->full_name;
         $user->username = $request->user_name;
@@ -48,33 +51,18 @@ class UsersController extends Controller
 
     public function add()
     {
-        
-        if(Auth::user()->roles->id != 1){
-            return back()->with('message', 'Unauthorize');
-        }
-
         $roles = Role::with('permissions')->get();
         return view('user_management.users.user-add', compact('roles'));
     }
 
     public function edit(User $user)
     {
-        
-        if(Auth::user()->roles->id != 1){
-            return back()->with('message', 'Unauthorize');
-        }
-
         $roles = Role::with('permissions')->get();
         return view('user_management.users.edit', compact('roles', 'user'));
     }
 
     public function update(UserUpdateRequest $request, User $user)
     {   
-        
-        if(Auth::user()->roles->id != 1){
-            return back()->with('message', 'Unauthorize');
-        }
-
         $user->name = $request->full_name;
         $user->username = $request->user_name;
         $user->role_id = $request->user_role;
@@ -97,11 +85,6 @@ class UsersController extends Controller
 
     public function delete(User $user)
     {
-        
-        if(Auth::user()->roles->id != 1){
-            return back()->with('message', 'Unauthorize');
-        }
-
         $user->delete();
 
         return back()->with('message', 'Deleted Successfully.');
