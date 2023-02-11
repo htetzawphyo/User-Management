@@ -40,7 +40,7 @@
 						<!--begin::Wrapper-->
 						<div class="w-lg-500px p-10">
 							<!--begin::Form-->
-							<form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="../../demo1/dist/index.html" action="{{ route('login') }}" method="POST">
+							<form class="form w-100" novalidate="novalidate" id="kt_sign_in_form" data-kt-redirect-url="../../demo1/dist/index.html" action="{{ route('check') }}" method="POST">
 								@csrf
 								<!--begin::Heading-->
 								<div class="text-center mb-11">
@@ -51,6 +51,11 @@
 									
 									<!--end::Subtitle=-->
 								</div>
+								@if (session('message'))
+									<div class="alert alert-danger" role="alert">
+										{{ session('message') }}
+									</div>
+								@endif
 								<!--begin::Heading-->
 								<!--begin::Login options-->
 								

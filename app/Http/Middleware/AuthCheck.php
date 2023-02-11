@@ -2,12 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Permissions;
 use Closure;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class CreateUser
+class AuthCheck
 {
     /**
      * Handle an incoming request.
@@ -18,15 +16,8 @@ class CreateUser
      */
     public function handle(Request $request, Closure $next)
     {
-        $user_permissions = [];
-        
-        foreach(Auth::user()->roles->permissions as $permission){
-            $user_permissions[] = $permission->id;
-        }
-        
-        $check = in_array(1,$user_permissions);
-        if(!$check){
-            return back()->with('message', 'Unauthorize');
+        if(!session()->has('isUser') && $request->path() !='login'){
+            return redirect('login')->with('message','You must be logged in');
         }
         return $next($request);
     }

@@ -18,6 +18,7 @@ class DeleteUser
     public function handle(Request $request, Closure $next)
     {
         $user_permissions = [];
+        
         foreach(Auth::user()->roles->permissions as $permission){
             $user_permissions[] = $permission->id;
         }

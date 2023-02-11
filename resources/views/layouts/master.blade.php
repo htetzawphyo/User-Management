@@ -205,7 +205,7 @@
 										<!--end::Menu item-->
 										<!--begin::Menu item-->
 										<div class="menu-item px-5">
-											<form action="{{ route('logout') }}" method="POST">
+											<form action="{{ route('logout') }}" method="GET">
 												@csrf
 												<button type="submit" class="btn btn-primary btn-sm">Sign Out</button>
 											</form>

@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\UsersController;
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'AuthCheck'], function() {
     Route::controller(RolesController::class)->group(function() {
         Route::get('/roles', 'index')->name('roles');
         Route::post('/roles/store', 'store')->name('roles.store');
@@ -23,11 +24,16 @@ Route::group(['middleware' => 'auth'], function() {
         Route::delete('/users/{user}', 'delete')->name('users.delete');
     });
     Route::get('/home', [App\Http\Controllers\UsersController::class, 'index'])->name('home');
+    Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
 });
 
 Route::get('/', function () {    
     return view('auth.login'); 
 });
 
-Auth::routes();
+Route::get('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login');
+Route::post('/check', [App\Http\Controllers\AuthController::class, 'check'])->name('check');
+Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');
+
+// Auth::routes();
 

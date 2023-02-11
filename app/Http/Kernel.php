@@ -71,5 +71,6 @@ class Kernel extends HttpKernel
         'RoleRead' => \App\Http\Middleware\RoleRead::class,
         'RoleUpdate' => \App\Http\Middleware\RoleUpdate::class,
         'RoleDelete' => \App\Http\Middleware\RoleDelete::class,
+        'AuthCheck' => \App\Http\Middleware\AuthCheck::class,
     ];
 }
