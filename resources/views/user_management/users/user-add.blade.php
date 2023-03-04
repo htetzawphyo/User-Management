@@ -64,7 +64,34 @@
 
                             <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <div class="fv-row mb-7">                                    
+                                {{-- begin::Profile Image --}}
+                                <label class="fw-semibold fs-6 mb-2 d-block">Profile Image</label>
+                                <div class="image-input image-input-outline image-input-placeholder" data-kt-image-input="true">
+                                    <!--begin::Preview existing avatar-->
+                                    <div class="image-input-wrapper w-125px h-125px" style=""></div>
+                                    <!--end::Preview existing avatar-->
+                                    <!--begin::Label-->
+                                    <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
+                                        <i class="bi bi-pencil-fill fs-7"></i>
+                                        <!--begin::Inputs-->
+                                        <input type="file" name="profile_image" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="avatar_remove" />
+                                        <!--end::Inputs-->
+                                    </label>
+                                    <!--end::Label-->
+                                    <!--begin::Cancel-->
+                                    <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
+                                        <i class="bi bi-x fs-2"></i>
+                                    </span>
+                                    <!--end::Cancel-->
+                                    <!--begin::Remove-->
+                                    <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
+                                        <i class="bi bi-x fs-2"></i>
+                                    </span>
+                                    <!--end::Remove-->
+                                </div>
+                                {{-- end::Profile-image --}}
+                                <div class="fv-row mb-7 mt-4">                                    
                                     <label class="required fw-semibold fs-6 mb-2">Full Name</label>                                                                       
                                     <input type="text" name="full_name" class="form-control form-control-solid mb-3 mb-lg-0" placeholder="Full name" />                                   
                                 </div>

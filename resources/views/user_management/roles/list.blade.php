@@ -56,11 +56,6 @@
                         </ul>
                     </div>
                 @endif
-                @if (session('message'))
-                    <div class="alert alert-success" role="alert">
-                        {{ session('message') }}
-                    </div>
-                @endif
                 <!--begin::Row-->
                 <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-5 g-xl-9">
                     <!--begin::Col-->
@@ -97,11 +92,13 @@
                                     <a  href="{{ route('roles.edit', $role->id) }}">
                                         <button class="btn btn-light btn-active-primary my-1 me-2">Edit Role</button>
                                     </a>
-                                    <form action="{{ route('roles.delete', $role->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button class="btn btn-light btn-active-danger my-1 me-2"  onclick="return confirm('Are you sure you want to delet?')">Delete Role</button>                                        
-                                    </form>
+                                    @if ($role->name != 'admin')                                        
+                                        <form action="{{ route('roles.delete', $role->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <span class="delete-confirm btn btn-light btn-active-danger my-1 me-2">Delete</span>
+                                        </form>
+                                    @endif
                                 </div>
                                 <!--end::Card footer-->
                             </div>
@@ -243,11 +240,6 @@
                                         <button type="reset" class="btn btn-light me-3" data-kt-roles-modal-action="cancel">Discard</button>
                                         <button type="submit" class="btn btn-primary">Submit</button>
                                         <span class="d-none" data-kt-roles-modal-action="submit"></span>
-                                        {{-- <button type="submit" class="btn btn-primary" data-kt-roles-modal-action="submit">
-                                            <span class="indicator-label">Submit</span>
-                                            <span class="indicator-progress">Please wait...
-                                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                                        </button> --}}
                                     </div>
                                     <!--end::Actions-->
                                 </form>
@@ -277,26 +269,51 @@
 		<script src="/assets/js/custom/apps/user-management/roles/list/add.js"></script>
         
 		<!--end::Custom Javascript-->
-        <script type="text/javascript">
-            const button = document.getElementById('confirm');
-
-            button.addEventListener('click', e =>{
-                alert('helo');
-                // return;
+        <script>
+            $('.delete-confirm').on('click', function(e) {
                 e.preventDefault();
-
+                let form = $(this).closest('form');
                 Swal.fire({
-                    html: `Are you sure you want to delete this role?`,
-                    icon: "info",
-                    buttonsStyling: false,
+                    title: 'Are you sure?',
+                    text: "You want to delete it!",
+                    type: 'warning',
                     showCancelButton: true,
-                    confirmButtonText: "Ok, delete it!",
-                    cancelButtonText: 'Nope, cancel it',
-                    customClass: {
-                        confirmButton: "btn btn-darnger",
-                        cancelButton: 'btn btn-primary'
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                        form.submit();
                     }
                 });
             });
+
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toastr-top-center",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
         </script>
+        @if (session('message'))
+            <script>
+                toastr.success("{{session('message')}}");
+            </script>
+        @endif
+        @if (session('401message'))
+            <script>
+                toastr.warning("{{session('401message')}}");
+            </script>
+        @endif
     @endpush

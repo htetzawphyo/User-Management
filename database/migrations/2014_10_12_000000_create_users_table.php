@@ -29,21 +29,6 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         }); 
-
-        DB::table('users')->insert(
-            [
-                [
-                    'name' => 'Administractor',
-                    'username' => 'Admin',
-                    'role_id' => 1,
-                    'phone' => '+959 428786611',
-                    'email' => 'admin@gmail.com',
-                    'password' => Hash::make('password'),
-                    'gender' => 1,
-                    'is_active' => 1
-                ],
-            ]
-        );
     }
 
     /**

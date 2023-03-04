@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DocumentsController;
+use App\Http\Controllers\DoSpaceController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RolesController;
@@ -22,6 +24,12 @@ Route::group(['middleware' => 'AuthCheck'], function() {
         Route::get('/users/{user}', 'edit')->name('users.edit');
         Route::put('/users/{user}', 'update')->name('users.update');
         Route::delete('/users/{user}', 'delete')->name('users.delete');
+    });
+    
+    Route::controller(DocumentsController::class)->group(function() {
+        Route::get('/dospace', 'index');
+        Route::post('/files/store', 'store')->name('files.store');
+        Route::delete('/files/{document}', 'delete')->name('files.delete');
     });
     Route::get('/home', [App\Http\Controllers\UsersController::class, 'index'])->name('home');
     Route::get('/logout', [App\Http\Controllers\AuthController::class, 'logout'])->name('logout');

@@ -20,43 +20,6 @@ return new class extends Migration
             $table->integer('feature_id');
             $table->timestamps();
         });
-
-        DB::table('permissions')->insert(
-            [
-                [
-                    'name' => 'Create User',
-                    'feature_id' => '1'
-                ],
-                [
-                    'name' => 'View User',
-                    'feature_id' => '1'
-                ],
-                [
-                    'name' => 'Update User',
-                    'feature_id' => '1'
-                ],
-                [
-                    'name' => 'Delete User',
-                    'feature_id' => '1'
-                ],
-                [
-                    'name' => 'Create Role',
-                    'feature_id' => '2'
-                ],
-                [
-                    'name' => 'View Role',
-                    'feature_id' => '2'
-                ],
-                [
-                    'name' => 'Update Role',
-                    'feature_id' => '2'
-                ],
-                [
-                    'name' => 'Delete Role',
-                    'feature_id' => '2'
-                ],
-            ]
-        );
     }
 
     /**
