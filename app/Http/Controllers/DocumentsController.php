@@ -14,7 +14,7 @@ class DocumentsController extends Controller
     // for check data 
     public function index()
     {
-        $files = Storage::disk('do')->allFiles('');
+        $files = Storage::disk('do')->allFiles();
         
         foreach ($files as $file) {
             echo $file . '<br>';
@@ -30,11 +30,12 @@ class DocumentsController extends Controller
         $file = $request->file('doc_file');
         $path = time() . '_' . $request->file('doc_file')->getClientOriginalName();
         
-        if($request->storage == 1) {
-            Storage::disk('do')->put('/hzp/'.$path, file_get_contents($file));
-        }else{
-            Storage::put('documents/' . $path, file_get_contents($file));
-        }
+        Storage::put('documents/' . $path, file_get_contents($file));
+        // if($request->storage == 1) {
+        //     Storage::disk('do')->put('/hzp/'.$path, file_get_contents($file));
+        // }else{
+        //     Storage::put('documents/' . $path, file_get_contents($file));
+        // }
 
         $document = new Documents();
         $document->user_id = $request->user_id;
@@ -56,9 +57,9 @@ class DocumentsController extends Controller
             Storage::delete('documents/'.$document->file_path);
         }
 
-        if(Storage::disk('do')->exists('hzp/'. $document->file_path)){
-            Storage::disk('do')->delete('hzp/'.$document->file_path);
-        }
+        // if(Storage::disk('do')->exists('hzp/'. $document->file_path)){
+        //     Storage::disk('do')->delete('hzp/'.$document->file_path);
+        // }
         
         $document->delete();
 

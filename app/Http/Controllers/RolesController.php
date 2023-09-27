@@ -31,7 +31,7 @@ class RolesController extends Controller
     public function store(RoleCreateRequest $request)
     {        
         $role = new Role();
-        $role->name = $request->role_name;
+        $role->name = $request->role_name; 
         $role->save();
         $permission = $request->input('user_management');
         $permission_id = array_map('intval', $permission);
@@ -52,7 +52,7 @@ class RolesController extends Controller
     }
 
     public function update(RoleUpdateRequest $request,Role $role)
-    {
+    { 
         $role->name = $request->role_name;
         $role->save();
         $permission = $request->input('user_management');

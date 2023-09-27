@@ -32,6 +32,8 @@ class UsersController extends Controller
 
     public function index(Request $request) 
     {
+        // $users = User::UserDefault()->get(); // test scope
+        // dd($users);
         $roles = Role::with('permissions')->get();
         $query = User::with('roles')->orderBy('id');
 
@@ -49,7 +51,7 @@ class UsersController extends Controller
     public function store(UserCreateRequest $request)
     {
         DB::beginTransaction();
-        try{
+        try{ 
             if($request->hasFile('profile_image')){
                 $file = $request->file('profile_image');
                 $img_name = time() . '_' . $request->file('profile_image')->getClientOriginalName();

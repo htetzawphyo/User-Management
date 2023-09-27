@@ -160,7 +160,7 @@
                                     </label>                                   
                                 </div>
 
-                                <div class="mb-7">
+                                <div class="mb-7"> 
                                     <label class="required fw-semibold fs-6 mb-5">Role</label>
                                     @foreach ($roles as $role)
                                         <div class="d-flex fv-row">

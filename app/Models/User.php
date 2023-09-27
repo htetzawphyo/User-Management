@@ -59,4 +59,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Documents::class);
     }
+
+    // test scope
+    public function scopeUserDefault($query)
+    {
+        return $query->where('id', '>', 0);
+    }
 }

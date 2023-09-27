@@ -395,7 +395,7 @@
 										@endif 
 										<!--end::Input group-->
 										<div class="form-text fs-6 text-muted mb-5">Max file size is 20MB per file.</div>
-										<hr>
+										{{-- <hr>
 										<div class="mb-5">	
 											<label class="fw-semibold fs-6 mb-2">Select Storage </label>									
 											<h6 class="fs-7 text-muted">* Default - Digital Ocean Spaces Storage</h6>	
@@ -403,7 +403,7 @@
 												<option value="1" class="form-select" selected>Digital Ocean Space</option>
 												<option value="2" class="form-select">Local Storage</option>
 											</select>
-										</div>
+										</div> --}}
 									</div>
 									<!--end::Modal body-->
 									{{-- begin::Modal footer --}}
@@ -609,7 +609,7 @@
 													</div>  
 													@if ($errors->editUser->has('user_gender'))
 														<div class="text-danger my-2">{{ $errors->editUser->first('user_gender') }}</div>
-													@endif                            --}}
+													@endif                            
 												</div>
 												<!--end::Input group-->
 												<!--begin::Input group-->
