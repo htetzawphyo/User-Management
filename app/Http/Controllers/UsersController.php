@@ -176,9 +176,9 @@ class UsersController extends Controller
                     if(Storage::exists('documents/'. $doc->file_path)){
                         Storage::delete('documents/'. $doc->file_path);
                     }
-                    if(Storage::disk('do')->exists('hzp/'. $doc->file_path)){
-                        Storage::disk('do')->delete('hzp/'.$doc->file_path);
-                    }
+                    // if(Storage::disk('do')->exists('hzp/'. $doc->file_path)){
+                    //     Storage::disk('do')->delete('hzp/'.$doc->file_path);
+                    // }
                     $doc->delete();
                 }
             }
